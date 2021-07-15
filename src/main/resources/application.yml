@@ -1,0 +1,60 @@
+server:
+  port: 18800
+
+management:
+  server:
+    port: 18900
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState,ping
+          show-details: always
+        readiness:
+          include: readinessState
+          show-details: always
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    livenessstate:
+      enabled: true
+    ping:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+spring:
+  profiles:
+    active: development
+  application:
+    name: example-service
+  main:
+    banner-mode: off
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      enabled: true
+      host: ${CONSUL_HOST:consul}
+      config:
+        prefixes: pfx
+        default-context: shared
+      discovery:
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        prefer-agent-address: true
+        prefer-ip-address: true
+        health-check-path: /management/health/liveness
+        query-passing: true
+
+alpha:   alpha-from-application-yml
+charlie: charlie-from-application-yml
+echo:    echo-from-application-yml
+gamma:   gamma-from-application-yml

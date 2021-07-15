@@ -1,0 +1,12 @@
+*.iml
+target
+.idea
+**/*.new-version
+AcceptanceTests/docker-compose.yml
+AcceptanceTests/docker-compose.yml-e
+*.log
+git.properties
+dependency-check-suppression.xml
+output.txt
+.flattened-pom.xml
+consul/storage

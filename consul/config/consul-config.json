@@ -1,0 +1,11 @@
+{
+  "advertise_addr": "127.0.0.1",
+  "datacenter": "dc1",
+  "primary_datacenter": "dc1",
+  "data_dir": "/consul/storage",
+  "client_addr": "0.0.0.0",
+  "ui": true,
+  "bootstrap": true,
+  "bootstrap_expect": 1,
+  "server": true
+}

@@ -1,0 +1,14 @@
+version: "2.3"
+
+services:
+
+  consul:
+    image: library/consul:1.10.0
+    container_name: consul
+    ports:
+      - 8301:8301
+      - 8500:8500
+    volumes:
+      - /Users/oliverlockwood/work/_misc/sb2.4-consul-example/consul/storage:/consul/storage
+      - /Users/oliverlockwood/work/_misc/sb2.4-consul-example/consul/config:/consul/config
+    entrypoint: /bin/consul agent -config-dir=/consul/config

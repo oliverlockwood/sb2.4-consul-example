@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: development
+  application:
+    name: example-service
+  cloud:
+    consul:
+      enabled: true
+      host: localhost
+      config:
+        prefixes: pfx
+        default-context: shared
+      discovery:
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        prefer-agent-address: true
+        prefer-ip-address: true
+        health-check-path: /management/health/liveness
+        query-passing: true

@@ -1,0 +1,46 @@
+server:
+  port: 18800
+
+management:
+  server:
+    port: 18900
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState,ping
+          show-details: always
+        readiness:
+          include: readinessState
+          show-details: always
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    livenessstate:
+      enabled: true
+    ping:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+spring:
+  main:
+    banner-mode: off
+
+alpha:   alpha-from-application-yml
+charlie: charlie-from-application-yml
+echo:    echo-from-application-yml
+gamma:   gamma-from-application-yml
+
+india:   india-from-application-yml
+kilo:    kilo-from-application-yml
+mike:    mike-from-application-yml
+oscar:   oscar-from-application-yml
